@@ -26,6 +26,7 @@ public class MainMenu extends Menu {
             switch (chosenItem) {
                 case "1":
                     User currentUser = userService.login();
+                    new UserMenu().run(currentUser);
                     break;
                 case "2":
                     userService.register();

@@ -4,8 +4,11 @@ import ir.maktab.base.domain.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = User.TABLE_NAME)
@@ -13,16 +16,15 @@ public class User extends BaseEntity<Integer> {
 
     public static final String TABLE_NAME = "users";
 
-    @Column
+
     private String username;
-    @Column
     private String password;
-    @Column
     private String nationalCode;
-    @Column
     private LocalDate birthday;
     @Column(columnDefinition = "TINYINT(1)")
     private Boolean status;
+    @OneToMany(mappedBy = "user")
+    private Set<Activity> activities;
 
     public User() {
     }
